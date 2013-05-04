@@ -1,0 +1,6 @@
+C:\src\ExtractEnglishSubTitlesWPF\Eac3ToLib\bin\Debug\Eac3ToLib.dll
+C:\src\ExtractEnglishSubTitlesWPF\Eac3ToLib\bin\Debug\Eac3ToLib.pdb
+C:\src\ExtractEnglishSubTitlesWPF\Eac3ToLib\bin\Debug\log4net.dll
+C:\src\ExtractEnglishSubTitlesWPF\Eac3ToLib\obj\Debug\Eac3ToLib.csprojResolveAssemblyReference.cache
+C:\src\ExtractEnglishSubTitlesWPF\Eac3ToLib\obj\Debug\Eac3ToLib.dll
+C:\src\ExtractEnglishSubTitlesWPF\Eac3ToLib\obj\Debug\Eac3ToLib.pdb

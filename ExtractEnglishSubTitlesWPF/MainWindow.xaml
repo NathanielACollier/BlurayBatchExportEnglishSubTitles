@@ -1,0 +1,68 @@
+﻿<Window x:Class="ExtractEnglishSubTitlesWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
+        xmlns:local="clr-namespace:ExtractEnglishSubTitlesWPF"
+        
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:ncBehaviors="clr-namespace:NacWPFUtilities.Behavior;assembly=NacWPFUtilities"
+        
+        
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+    <DockPanel>
+        
+        
+        <TabControl>
+            <TabItem Header="Folders">
+                
+                <DockPanel>
+                    
+                    <DockPanel
+                                DockPanel.Dock="Top">
+                        <TextBlock Text="SubTitles folder: " DockPanel.Dock="Left" />
+                        <Button Name="ChangeSubtitlesFolder" Content="Change" DockPanel.Dock="Right" Click="ChangeSubtitlesFolder_Click_1" />
+                        <TextBox Text="{Binding Path=SubTitlesFolder, Mode=TwoWay}" DockPanel.Dock="Left" />
+                      
+                    </DockPanel>
+                    
+                    <StackPanel Orientation="Horizontal"
+                                DockPanel.Dock="Top">
+                        <Button Content="Add" Name="AddBlurayFolderButton" Click="AddBlurayFolderButton_Click_1" />
+                        <Button Content="Run" Name="RunSubTitleExtractionButton" Click="RunSubTitleExtractionButton_Click_1" />
+                    </StackPanel>
+                    
+                    <ListView ItemsSource="{Binding Path=Folders}">
+                        
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Name="RemoveBluRayFolderButton"  Content="Remove" Click="RemoveBluRayFolderButton_Click_1" />
+                                    <TextBlock Text="{Binding Path=Path}" />
+                                </StackPanel>
+                                
+                                
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        
+                    </ListView>
+                    
+                </DockPanel>
+                
+                
+            </TabItem>
+            <TabItem Header="Log">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                    <i:Interaction.Behaviors>
+                        <ncBehaviors:AutoScrollingBehavior UpdateTrigger="{Binding Path=Message}" />
+                    </i:Interaction.Behaviors>
+                    <TextBox Text="{Binding Path=Message}" IsReadOnly="True" />
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+        
+        
+    </DockPanel>
+</Window>
