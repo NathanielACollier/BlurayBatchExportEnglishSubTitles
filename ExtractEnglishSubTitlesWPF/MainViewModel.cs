@@ -29,5 +29,11 @@ namespace ExtractEnglishSubTitlesWPF
         }
 
 
+        public bool Busy
+        {
+            get { return base.GetValue(() => this.Busy); }
+            set { base.SetValue(() => this.Busy, value); }
+        }
+
     }
 }

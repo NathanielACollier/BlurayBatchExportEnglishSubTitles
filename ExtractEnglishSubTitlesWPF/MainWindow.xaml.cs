@@ -98,12 +98,30 @@ namespace ExtractEnglishSubTitlesWPF
 
             Thread t = new Thread((ThreadStart)delegate
             {
-                foreach (var folder in model.Folders)
+                try
                 {
-                    Eac3ToLib.Eac3ToLib.GetAllEnglishSubTitles(folder.Path, model.SubTitlesFolder);
+                    foreach (var folder in model.Folders)
+                    {
+                        Eac3ToLib.Eac3ToLib.GetAllEnglishSubTitles(folder.Path, model.SubTitlesFolder);
+                        log.Info("Subtitle Extraction Complete");
+                        log.Info("Clearing folders");
+                        model.Folders.Clear();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.ErrorFormat("Error running subtitle extraction.  Exception: {0}", ex);
+                }
+                finally
+                {
+                    this.Dispatcher.Invoke(new Action(() =>
+                    {
+                        model.Busy = false;
+                    }));
                 }
             });
 
+            model.Busy = true;
             t.Start();
         }
 

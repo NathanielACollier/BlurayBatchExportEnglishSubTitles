@@ -6,7 +6,7 @@
         
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:ncBehaviors="clr-namespace:NacWPFUtilities.Behavior;assembly=NacWPFUtilities"
-        
+        xmlns:busy="clr-namespace:WpfBusyIndicator;assembly=WpfBusyIndicator"
         
         Title="MainWindow" Height="350" Width="525">
     <Window.DataContext>
@@ -14,8 +14,13 @@
     </Window.DataContext>
     <DockPanel>
         
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <TextBlock Text="English Subtitle Extractor" />
+            <busy:BusyIndicatorControl Busy="{Binding Path=Busy, Mode=TwoWay}" Width="20" Height="20" Visibility="Collapsed" />
+        </StackPanel>
         
-        <TabControl>
+        <TabControl DockPanel.Dock="Bottom">
             <TabItem Header="Folders">
                 
                 <DockPanel>
