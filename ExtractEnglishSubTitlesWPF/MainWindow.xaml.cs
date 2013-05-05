@@ -103,9 +103,13 @@ namespace ExtractEnglishSubTitlesWPF
                     foreach (var folder in model.Folders)
                     {
                         Eac3ToLib.Eac3ToLib.GetAllEnglishSubTitles(folder.Path, model.SubTitlesFolder);
-                        log.Info("Subtitle Extraction Complete");
-                        log.Info("Clearing folders");
-                        model.Folders.Clear();
+
+                        this.Dispatcher.Invoke(new Action(() =>
+                        {
+                            log.Info("Subtitle Extraction Complete");
+                            log.Info("Clearing folders");
+                            model.Folders.Clear();
+                        }));
                     }
                 }
                 catch (Exception ex)
